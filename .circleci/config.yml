@@ -26,6 +26,8 @@ jobs:
             sudo composer self-update
             --no-progress
             --clean-backups --<< parameters.cv >>
+      - run: composer validate
+      - run: composer check-platform-reqs
       - restore_cache:
           keys:
           - composer<< parameters.cv >>-{{ checksum "composer.lock" }}
